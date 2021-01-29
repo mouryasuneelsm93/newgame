@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <style>
+        .container-fluid {
+            height: 80vh;
+            /* border: ridge; */
+            padding-top: 30%;
+        }
+        
+        .img-fluid {
+            width: 10vw;
+            overflow: visible;
+            /* margin-left: 20%; */
+        }
+        
+        .img1 {
+            margin-top: -170px;
+            width: 25vw;
+            height: 25vh;
+            margin-left: 1000px;
+        }
+        
+        body {
+            background-color: #326586;
+            background-image: url('hunter.jpeg');
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body id="key">
+    <h1 style="font-weight:bold;color:blue">Score : <span id="score"></span></h1>
+    <div class="container-fluid">
+
+        <!-- <marquee direction="right" scrollamount="100"> -->
+        <img src="bullet.png" class="img-fluid ">
+        <!-- </marquee> -->
+        <img src="lion.gif" class="img1">
+    </div>
+</body>
+
+</html>
+<script>
+    var i = 10,
+        j = -170;
+    var b = 5;
+    // var r = 30;
+    $(document).ready(function() {
+
+
+        $("#key").on('keydown', function() {
+            j = j - 170;
+            $("#score").text(b);
+
+            $(".img1").css("margin-top", j);
+            // $(".img1").css("margin-left", b);
+            // $(".img1").css("margin-left", j);
+            b = b + 5;
+        })
+        $("#key").on('keyup', function() {
+            j = -170;
+            $(".img1").css("margin-top", j);
+            // $(".img1").css("margin-left", j);
+        })
+
+    })
+    setInterval(() => {
+        i = i + 10;
+        $(".img-fluid").css("margin-left", i);
+        // console.log(i);
+        if (i == 1000) {
+            i = 10;
+        }
+        if (j == -(i - 780)) {
+            alert("Game Over !");
+            window.location.href = "main.html";
+
+        }
+    }, 10);
+    // function pro() {}
+</script>
